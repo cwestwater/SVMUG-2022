@@ -13,7 +13,7 @@ Enable-NetFirewallRule -DisplayGroup "Remote Desktop" | Out-Null
 
 # Add Logoff icon to Desktop
 Write-Host "Add Logoff icon to Public Desktop"
-$shortcutPath = "C:\Users\Public\Desktop\Loggoff.lnk"
+$shortcutPath = "C:\Users\Public\Desktop\Logoff.lnk"
 $iconLocation = "C:\Windows\system32\shell32.dll"
 $iconArrayIndex = 44
 $shell = New-Object -ComObject ("WScript.Shell")
