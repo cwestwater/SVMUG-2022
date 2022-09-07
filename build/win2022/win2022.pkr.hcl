@@ -108,7 +108,7 @@ source "vsphere-iso" "win2022stdcore" {
 
   # VM Hardware Configuration
 
-  vm_name       = "win2022std"
+  vm_name       = "win2022stdcore"
   guest_os_type = "windows9Server64Guest"
   firmware      = "efi"
   vm_version    = 19
