@@ -1,3 +1,8 @@
+#########################################################################
+##                            Packer Block                             ##
+## Defines the version of Packer and the plugins tested with ths build ##
+#########################################################################
+
 packer {
   required_version = ">= 1.8.3"
 
@@ -15,6 +20,12 @@ packer {
     }
   }
 }
+
+#########################################################################
+##             Windows Server 2022 Standard Build Source               ##
+## This connects to the vCenter, creates the VM, mounts ISOs and       ##
+## floppy files used to create the bare Windows Server build           ##
+#########################################################################
 
 source "vsphere-iso" "win2022std" {
 
@@ -72,7 +83,7 @@ source "vsphere-iso" "win2022std" {
   ]
 
   remove_cdrom        = true
-  convert_to_template = false
+  convert_to_template = true
 
   # Build Settings
 
@@ -89,6 +100,12 @@ source "vsphere-iso" "win2022std" {
   shutdown_command = "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Build Complete\""
   shutdown_timeout = "1h"
 }
+
+#########################################################################
+##                Windows Server 2022 Core Build Source                ##
+## This connects to the vCenter, creates the VM, mounts ISOs and       ##
+## floppy files used to create the bare Windows Server build           ##
+#########################################################################
 
 source "vsphere-iso" "win2022stdcore" {
 
@@ -146,7 +163,7 @@ source "vsphere-iso" "win2022stdcore" {
   ]
 
   remove_cdrom        = true
-  convert_to_template = false
+  convert_to_template = true
 
   # Build Settings
 
@@ -164,6 +181,11 @@ source "vsphere-iso" "win2022stdcore" {
   shutdown_timeout = "1h"
 }
 
+#########################################################################
+##                             Build Block                             ##
+## This block builds the two sources above. It defines the OS          ##
+## customisation that we want to do once the OC is up                  ##
+#########################################################################
 
 build {
   name = "Windows Server 2022"
